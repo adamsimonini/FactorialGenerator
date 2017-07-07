@@ -2,17 +2,18 @@ $(document).ready(function(){
 
   var str = '';
 
-  function countInstances(string, char) {
-   var substrings = string.split(char);
-   return substrings.length -1;
-  }
+  // function countInstances(string, char) {
+  //  var substrings = string.split(char);
+  //  return substrings.length -1;
+  // }
 
   function duplicateChecker(){
     var duplicates = 0;
     for(i=0;i<str.length;i++){
-      var count = countInstances(str, str[i]);
+      var count = str.match(new RegExp(str[i], "g") || []).length;
+      // var count = countInstances(str, str[i]);
       if (count > 1){
-        duplicates += count;
+        removePermutations(count);
         console.log("We have " + count + " duplicates of " + str[i]);
       }else{
         console.log("No duplicates, yet...");
