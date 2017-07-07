@@ -20,9 +20,11 @@ $(document).ready(function(){
       var count = str.match(new RegExp(str[i], "g")).length;
       // var count = countInstances(str, str[i]);
       if (count > 1){
-        console.log("We have " + count + " duplicates of " + str[i]);
+        console.log("There are " + count + " duplicates of " + str[i]);
         deduction += factorializeNumber(count);
         createDiv(str[i], count);
+        var duplicateChars = /str[i]/g;
+        str = str.replace(duplicateChars, '');
       }else{
         console.log(str[i] + " has no duplicates");
       }
@@ -31,14 +33,12 @@ $(document).ready(function(){
   }
 
   function factorializeNumber(num){
-
     var numTotal = 1;
     var length = num;
-    var factor = num
-    // for(i=0;i < length;i++){
-    //   numTotal *= factor;
-    //   factor--;
-    // }
+    for(ii=0;ii < length;ii++){
+      numTotal *= num;
+      num--;
+    }
     return numTotal;
   }
 
