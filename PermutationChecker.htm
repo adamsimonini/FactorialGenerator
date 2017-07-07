@@ -15,6 +15,9 @@
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
 
+    <!-- Tether JS -->
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js"></script>
+
     <!-- BOOTSTRAP -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
@@ -26,12 +29,13 @@
     <script src = "scr.js"></script>
     <script src = ""></script>
 
+
     <!--Custom CSS-->
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <h1 class=""> Testing Site </h1>
+    <h1 class="text-center"> Permutations Generator </h1>
     <div class="container text-center">
       <div class="row">
         <div class="col-12">
@@ -41,7 +45,20 @@
           </div>
         </div>
       </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value=""> Subtract duplicate permutations (if any) </label>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button id="permuteBtn" type="button" class"btn-success">Permute</button>
+        </div>
+      </div>
+      <div class="col-12">
+        <p id="conclusion" style="visibility: hidden">The total number of permutations are: </p>
+      </div>
     </div>
+
+
 
   </body>
 
