@@ -2,17 +2,25 @@ $(document).ready(function(){
 
   var str = '';
 
+  function countInstances(string, char) {
+   var substrings = string.split(char);
+   return substrings.length -1;
+  }
+
   function duplicateChecker(){
     var duplicates = 0;
     for(i=0;i<str.length;i++){
-      var split = str.split(new RegExp(str[i], "gi"));
-      if (split.length > 1){
-        console.log("We have duplicates!");
+      var count = countInstances(str, str[i]);
+      if (count > 1){
+        duplicates += count;
+        console.log("We have " + count + " duplicates of " + str[i]);
       }else{
         console.log("No duplicates, yet...");
       }
     }
+    console.log(duplicates);
   }
+
   function factoralizeString(){
     var total = 1;
     length = str.length;
@@ -24,13 +32,11 @@ $(document).ready(function(){
   }
 
   $("#permuteBtn").on("click", function(){
-    duplicateChecker();
     str = document.getElementById("str").value;
-    console.log(str);
     if(str === ''){
       alert("Please input a string");
-      return;
     }else{
+      duplicateChecker();
       alert(factoralizeString());
     }
   });
