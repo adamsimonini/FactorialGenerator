@@ -18,7 +18,7 @@ $(document).ready(function(){
     for(i=0;i<str.length;i++){
       var count = str.match(new RegExp(str[i], "g")).length;
       if (count > 1){
-        numTotal /= count;
+        numTotal /= factorializeDuplicates(count);
         createDiv(str[i], count);
         str = str.replace(new RegExp(str[i], "gi"),'');
         i--;
@@ -29,16 +29,14 @@ $(document).ready(function(){
     return numTotal;
   }
 
-  // Unecessary, as removal of duplicates involved divison of amount of totalNum / # of identicals in group
-  // function factorializeNumber(num){
-  //   var numTotal = 1;
-  //   var length = num;
-  //   for(ii=0;ii < length;ii++){
-  //     numTotal *= num;
-  //     num--;
-  //   }
-  //   return numTotal;
-  // }
+  function factorializeDuplicates(num){
+    var duplicates = 1;
+    for(ii=0;ii<num;ii++){
+      duplicates *= num;
+      num--;
+    }
+    return duplicates;
+  }
 
   function factoralizeString(){
     var stringTotal = 1;
@@ -64,11 +62,15 @@ $(document).ready(function(){
     str = fullstring;
     if(fullstring === ''){
       alert("Please input a string");
-    }else if(document.getElementById('subtractDuplicates').checked){
-          conclusion.innerHTML = "The answer is " + duplicateChecker(factoralizeString());
+      return;
+    }
+    var numTotal = factoralizeString();
+
+    if(document.getElementById('subtractDuplicates').checked){
+          conclusion.innerHTML = "The answer is " + duplicateChecker(numTotal);
     }else{
-      duplicateChecker();
-      conclusion.innerHTML = "The answer is " + (factoralizeString());
+      // duplicateChecker(); just to show the dupicates in masterDiv
+      conclusion.innerHTML = "The answer is " + (numTotal);
     }
   });
 });
